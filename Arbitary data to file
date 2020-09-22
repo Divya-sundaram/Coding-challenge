@@ -1,0 +1,23 @@
+#include <stdio.h> 
+#include <stdlib.h>
+
+int main()
+{
+	    char *arr_ptr = (char*)calloc(1, sizeof(char));
+        char c = '\0';
+        int i = 0;
+			FILE *f_ptr = NULL;
+			while(1)
+				{
+					 c = getchar();
+					 arr_ptr[i++] = c;
+					 fopen_s(&f_ptr, "sample","w");
+					 if(f_ptr != NULL)
+						{
+							fwrite(arr_ptr, sizeof(char), i ,f_ptr);
+						}
+					 fclose(f_ptr);
+					 arr_ptr=(char*)realloc(arr_ptr,(i+1)*sizeof(char));
+				}
+			free(arr_ptr);
+}
